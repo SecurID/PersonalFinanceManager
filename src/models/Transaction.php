@@ -13,4 +13,8 @@ class Transaction {
         $this->date = $date;
         $this->description = $description;
     }
+
+    public function save() {
+        // Save the transaction to the database
+    }
 }
