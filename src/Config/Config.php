@@ -1,26 +1,24 @@
 <?php
-
 namespace App\Config;
 
 class Config {
-    private static ?Config $instance = null;
+    private static Config $instance;
     private array|false $settings = [];
 
     private function __construct()
     {
-        $this->settings = parse_ini_file('config.ini');
+        $this->settings = parse_ini_file(__DIR__ . '/config.ini');
     }
 
-    public static function getInstance(): ?Config
+    public static function getInstance(): Config
     {
-        if (self::$instance == null) {
+        if (!isset(self::$instance)) {
             self::$instance = new Config();
         }
         return self::$instance;
     }
 
-    public function get($key)
-    {
+    public function get($key) {
         return $this->settings[$key] ?? null;
     }
 }

@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../src/bootstrap.php';
 
 use App\Router;
 
@@ -7,8 +7,7 @@ $router = new Router();
 
 // Define routes
 $router->add('GET', '/', 'HomeController@index');
-$router->add('GET', '/register', 'RegisterController@showForm');
-$router->add('POST', '/register', 'RegisterController@register');
+$router->add('GET', '/category', 'CategoryController@index');
 
 // Dispatch the request
 $router->dispatch();

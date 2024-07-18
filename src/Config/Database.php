@@ -5,7 +5,7 @@ use PDO;
 use PDOException;
 
 class Database {
-    private static ?Database $instance = null;
+    private static Database $instance;
     private PDO $db;
 
     private function __construct() {
@@ -24,9 +24,9 @@ class Database {
         }
     }
 
-    public static function getInstance(): ?Database
+    public static function getInstance(): Database|array
     {
-        if (!self::$instance) {
+        if (!isset(self::$instance)) {
             self::$instance = new Database();
         }
         return self::$instance;
